@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSmart School Management System</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+:root {
+--blue-900: #19295c;
+--blue-800: #19315c;
+--blue-700: #2d4a80;
+--blue-600: #263f72;
+--blue-500: rgba(38, 63, 114, 0.92);
+--blue-400: rgba(56, 72, 120, 0.95);
+--text-dark: #26334e;
+--text-light: #f8fbff;
+--gold: #ffc72c;
+--gold-200: #ffe189;
+--link-cyan: #53d4fd;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Montserrat', Arial, sans-serif;
+margin: 0;
+background: url(/Class.jpg) no-repeat center center fixed;
+background-size: 1550px auto;
+background-color: #f5f8fd;
+color: #26334e;
+position: relative;
+min-height: 100vh;
+}
+
+/* Layered sections */
+.navbar,
+.announcements,
+.hero,
+.info-section,
+.website-showcase,
+.footer {
+position: relative;
+z-index: 1;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(25, 47, 89, 0.96);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 80px;
+    box-shadow: 0 2px 8px rgba(38,63,114,0.12);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 5px; /* small gap between logo image and heading */
+}
+.logo-img {
+    height: 75px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+@media (max-width: 950px) {
+    .logo-img {
+        height: 36px;
+    }
+}
+.navbar .logo {
+    color: #fff;
+    font-size: 1.85em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 16px #26334e55;
+}
+.navbar nav {
+    display: flex;
+    gap: 20px;
+}
+.navbar nav a {
+    color: #dbe8fa;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0 10px;
+    position: relative;
+    transition: color 0.3s;
+}
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #ffc72c;
+}
+
+/* Announcements marquee */
+.announcements {
+background: rgba(242, 248, 254, 0.92);
+color: #173272;
+font-weight: 600;
+padding: 13px 0;
+text-align: center;
+font-size: 1.08em;
+overflow: hidden;
+white-space: nowrap;
+}
+.marquee {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marqueeAnim 20s linear infinite;
+    font-weight: 600;
+    font-size: 1.08em;
+    letter-spacing: 0.02em;
+}
+@keyframes marqueeAnim {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Hero */
+.hero {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: #fff;
+min-height: 250px;
+padding: 60px 24px 20px;
+}
+.hero h1 {
+font-size: 2.5em;
+margin: 0 0 16px;
+font-weight: 800;
+text-shadow: 0 2px 18px rgba(38, 51, 78, 0.6);
+}
+.hero p {
+font-size: 1.18em;
+max-width: 690px;
+margin: 0 auto 18px;
+color: var(--text-light);
+text-shadow: 0 1px 6px rgba(25, 49, 92, 0.45);
+}
+.hero button {
+margin-top: 10px;
+background: var(--gold);
+color: var(--blue-800);
+border: none;
+border-radius: 4px;
+padding: 10px 34px;
+font-size: 1.09em;
+font-weight: 600;
+box-shadow: 0 2px 8px rgba(255, 199, 44, 0.14);
+transition: background 0.27s;
+cursor: pointer;
+}
+.hero button:hover {
+background: #ffd350;
+}
+.vision {
+display: none;
+padding: 14px 0;
+font-size: 1.07em;
+color: #fff;
+max-width: 820px;
+margin: 8px auto 0;
+text-shadow: 0 1px 6px rgba(25, 49, 92, 0.35);
+}
+
+/* Info sections */
+.info-section,
+.website-showcase {
+background: rgba(255, 255, 255, 0.97);
+color: #f8fbff;
+border-radius: 12px;
+box-shadow: 0 2px 16px rgba(38, 51, 78, 0.19);
+max-width: 950px;
+margin: 32px auto;
+padding: 34px 24px 24px;
+}
+.info-section h2,
+.website-showcase h2 {
+margin: 0 0 16px;
+color: #174099;
+font-size: 1.32em;
+font-weight: 800;
+text-align: center;
+}
+.info-flex {
+display: flex;
+flex-wrap: wrap;
+gap: 30px;
+justify-content: center;
+}
+.info-block {
+flex: 1 1 220px;
+min-width: 210px;
+background: #f7fbff;
+padding: 18px 14px;
+border-radius: 7px;
+box-shadow: 0 2px 8px rgba(21, 36, 106, 0.08);
+margin-bottom: 18px;
+transition: box-shadow 0.23s, transform 0.23s;
+}
+.info-block:hover {
+box-shadow: 0 10px 26px rgba(32, 48, 92, 0.22);
+transform: translateY(-2px);
+}
+.info-block h4 {
+color: #173272;
+margin: 0 0 7px;
+font-size: 1.08em;
+font-weight: 700;
+}
+.info-block ul,
+.info-block p {
+color: #333d54;
+margin: 6px 0 0 24px;
+font-size: 1.02em;
+text-align: left;
+}
+.info-block ul {
+padding-left: 0;
+list-style: disc;
+}
+.info-link {
+color: var(--link-cyan);
+text-decoration: underline;
+cursor: pointer;
+}
+.info-link:hover {
+color: var(--gold-200);
+}
+
+/* Website showcase */
+.website-showcase {
+max-width: 900px;
+text-align: center;
+}
+.website-showcase h4 {
+margin: 0 0 10px;
+color: var(--gold);
+font-weight: 700;
+}
+.website-showcase ul {
+margin: 0 0 10px;
+display: inline-block;
+text-align: left;
+padding-left: 18px;
+}
+.website-showcase a {
+color: var(--link-cyan);
+text-decoration: underline;
+}
+.website-showcase a:hover {
+color: #fff167;
+}
+.site-about {
+display: none;
+margin: 10px 0 0;
+color: var(--gold);
+font-size: 1.03em;
+background: #274176;
+border-radius: 8px;
+padding: 12px;
+text-align: left;
+}
+
+/* Rankings table */
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 22px 0;
+background: #fff;
+color: #20305c;
+border-radius: 8px;
+overflow: hidden;
+}
+th,
+td {
+border: 1px solid #dde6f5;
+padding: 10px;
+text-align: left;
+}
+th {
+background: #f7fbff;
+color: #174099;
+font-weight: 700;
+}
+tbody tr {
+transition: background 0.15s, color 0.22s, font-weight 0.13s;
+}
+tbody tr:hover {
+background: #f1f8ff;
+color: #174099;
+cursor: pointer;
+font-weight: 600;
+}
+.inline-note {
+font-size: 0.98em;
+color: #ffe189;
+text-align: center;
+margin: 8px 0 0;
+display: block;
+}
+.school-pop {
+display: none;
+margin: 10px 0 0;
+background: #f5ffe1;
+border-radius: 7px;
+padding: 12px 14px;
+color: #20578b;
+font-size: 1em;
+}
+
+/* Footer */
+.footer {
+margin-top: 38px;
+padding: 40px 18px;
+background: var(--blue-900);
+color: #dbe8fa;
+text-align: center;
+font-size: 0.98em;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+gap: 22px;
+}
+.footer .footer-section {
+flex: 1 1 180px;
+min-width: 180px;
+}
+.footer h4 {
+font-weight: 700;
+margin: 0 0 14px;
+color: var(--gold);
+}
+.footer a {
+color: #dbe8fa;
+text-decoration: none;
+display: block;
+margin: 6px 0;
+transition: color 0.3s;
+}
+.footer a:hover {
+color: var(--gold);
+}
+.social-icons {
+display: flex;
+gap: 14px;
+margin-top: 10px;
+justify-content: center;
+}
+.social-icons a {
+width: 33px;
+height: 33px;
+background: #20305c;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+color: var(--gold);
+font-size: 17px;
+transition: background 0.3s;
+}
+.social-icons a:hover {
+background: var(--gold);
+color: #152a56;
+}
+.newsletter input[type="email"] {
+padding: 7px;
+border: none;
+border-radius: 4px;
+font-size: 0.94em;
+}
+.newsletter button {
+background: var(--gold);
+border: none;
+padding: 9px 12px;
+font-weight: 700;
+border-radius: 4px;
+color: var(--blue-800);
+margin-top: 5px;
+font-size: 1em;
+cursor: pointer;
+}
+
+/* Responsive */
+
+    </style>
+</head>
+<body>
+        <div class="navbar">
+    <a href="about.html" class="logo">
+        <img src="Logo.png" alt="EduSmart Logo" class="logo-img">
+        <h1 style="font-size: 80%; font-weight: bold; text-align: left; margin: 0;">
+            <span style="color: #3985dc;">Brighta</span><span style="color: #ffc72c;">Path</span><br>
+            <span style="color: #ffc72c; font-size: 90%; letter-spacing: 0.05em;">School</span>
+        </h1>
+    </a>
+
+    <nav>
+            <a href="index.html">HOME</a>
+            <a href="about.html" class="active">ABOUT</a>
+            <a href="courses.html">COURSES</a>
+            <a href="events.html">EVENTS</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="blog.html">BLOG</a>
+            <a href="pages.html">PAGES</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+<!-- <img src="/CBSE.jpg"
+     alt="School Banner"
+     class="navbar-img-banner"> -->
+
+    </div>
+
+    <div class="announcements">
+        <div class="marquee">
+            📢 Admissions Open 2025-26  •  Summer Workshops in June  •  Parent-Teacher Meeting - 3rd Sept  •  School App Now Available!
+        </div>
+    </div>
+    <section class="hero">
+        <h1>EduSmart School—Empowering Minds, Building Futures</h1>
+        <p>
+            EduSmart blends traditional values with cutting-edge educational technology, nurturing excellence and passion for discovery in every learner.
+        </p>
+        <button onclick="showVision()">Show Vision, Mission & Core Values</button>
+        <p id="vision-content" style="display:none;padding:14px 0; font-size:1.07em;"></p>
+    </section>
+
+    <section class="info-section">
+        <h2>What Does Our School Website Offer?</h2>
+        <div class="info-flex">
+            <div class="info-block" onclick="showInfo('academics')">
+                <h4><i class="fa fa-graduation-cap"></i> Academic Programs</h4>
+                <ul>
+                    <li>Modern curriculum and enrichment in Science, Maths, Languages, Arts.</li>
+                    <li>Coaching for Olympiads, entrance exams, & competitions <span class="info-link" onclick="event.stopPropagation();alert('Find detailed schedules for Olympiads/competitions on our Events page!')">[see events]</span></li>
+                    <li>Course updates and resources regularly posted for all visitors.</li>
+                </ul>
+            </div>
+            <div class="info-block" onclick="showInfo('facilities')">
+                <h4><i class="fa fa-building"></i> Campus & Facilities</h4>
+                <ul>
+                    <li>State-of-the-art science/IT labs, digital classrooms, libraries, playgrounds.</li>
+                    <li>Gallery of campus images, virtual tours <span class="info-link" onclick="event.stopPropagation();alert('Check our Gallery page for virtual tours and photos!')">[gallery]</span></li>
+                    <li>Directions & accessibility info for all visitors.</li>
+                </ul>
+            </div>
+            <div class="info-block" onclick="showInfo('news')">
+                <h4><i class="fa fa-newspaper"></i> Latest News & Events</h4>
+                <ul>
+                    <li>All school circulars, results, newsletters—no login needed!</li>
+                    <li>Events calendar, registration links, live event highlights <span class="info-link" onclick="event.stopPropagation();alert('Visit Events page for details and registrations!')">[explore]</span></li>
+                </ul>
+            </div>
+            <div class="info-block" onclick="showInfo('forall')">
+                <h4><i class="fa fa-users"></i> For Everyone</h4>
+                <ul>
+                    <li><b>Students:</b> Timetables, activity notes, school news <span class="info-link" onclick="event.stopPropagation();alert('Sample exam papers and notes available for students!')">[resources]</span></li>
+                    <li><b>Parents:</b> Announcements, policy info, event galleries.</li>
+                    <li><b>Teachers:</b> Timetable updates, academic news, forms & documents.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="website-showcase">
+        <h2>Official School Website Inspiration</h2>
+        <h4>Explore these Top India School Websites</h4>
+        <ul>
+            <li><a href="https://www.davpune.com" target="_blank" onclick="websiteAbout('DAV Public School, Pune')">DAV Public School, Pune</a> —
+                <span class="info-link" onclick="websiteAbout('DAV Public School, Pune')">About</span></li>
+            <li><a href="https://www.stmarysschoolpune.edu.in" target="_blank" onclick="websiteAbout('St. Mary\'s School, Pune')">St. Mary's School, Pune</a> —
+                <span class="info-link" onclick="websiteAbout('St. Mary\'s School, Pune')">About</span></li>
+            <li><a href="https://www.cathedral-school.com" target="_blank" onclick="websiteAbout('Cathedral and John Connon School, Mumbai')">Cathedral and John Connon School, Mumbai</a> —
+                <span class="info-link" onclick="websiteAbout('Cathedral and John Connon School, Mumbai')">About</span></li>
+        </ul>
+        <em>Click school names to visit or "About" to see a profile here.</em>
+        <div id="website-about" style="margin:10px 0 0 0;color:#ffc72c;display:none;font-size:1.03em; background:#274176; border-radius:8px; padding:12px;"></div>
+    </section> -->
+
+    <section class="info-section">
+        <h2>Top Ranked Maharashtra Board Schools</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>School Name</th>
+                <th>City</th>
+                <th>Specialty &amp; Rank (click a row!)</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr onclick="schoolDetails('St. Xavier\'s High School', 'Mumbai')">
+                    <td>St. Xavier's High School</td>
+                    <td>Mumbai</td>
+                    <td>Consistent 1st rank in SSC Board Results</td>
+                </tr>
+                <tr onclick="schoolDetails('J.M. Rathi High School', 'Nashik')">
+                    <td>J.M. Rathi High School</td>
+                    <td>Nashik</td>
+                    <td>State Topper in 2024</td>
+                </tr>
+                <tr onclick="schoolDetails('Bishop\'s School', 'Pune')">
+                    <td>Bishop's School</td>
+                    <td>Pune</td>
+                    <td>Best for Sports, All-round Development</td>
+                </tr>
+                <tr onclick="schoolDetails('S.P. Mandali\'s English Medium School', 'Solapur')">
+                    <td>S.P. Mandali's English Medium School</td>
+                    <td>Solapur</td>
+                    <td>Top English-medium school</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="schooldetails" style="display:none;margin:0 0 10px 0; background:#f5ffe1; border-radius:7px; padding:12px 14px; color:#20578b; font-size:1em;"></div>
+        <p style="font-size:0.98em;color:#ffbf00;text-align:center;">
+            <i>Tap a row to reveal school details | Source: Maharashtra Board/state news</i>
+        </p>
+    </section>
+    <section class="info-section">
+        <h2>Why Visit EduSmart Online?</h2>
+        <div class="info-block" style="cursor:pointer;" onclick="alert('Thank you! Stay updated for the latest news, resources, and achievements at EduSmart.')">
+            <ul>
+                <li>Latest updates, academic programs, and event highlights.</li>
+                <li>Photo/video galleries and campus stories—open to all.</li>
+                <li>No login needed: admissions, rules, policies, FAQ.</li>
+                <li>See achievements and community outreach!</li>
+            </ul>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>452 School Street<br>YourCity, State 12345<br>Phone: (555) 123-4567<br>Email: info@edusmart.edu</p>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Newsletter</h4>
+            <form onsubmit="event.preventDefault();alert('Thank you for subscribing!');" style="display:flex;flex-direction:column;gap:10px;">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </footer>
+    <script>
+        // Marquee duplicate for loop effect
+        document.addEventListener("DOMContentLoaded", function(){
+            const marquee = document.querySelector('.marquee');
+            if(marquee){
+                marquee.innerHTML += ' &nbsp;&nbsp;&nbsp;&nbsp;' + marquee.innerHTML;
+            }
+        });
+
+        function showVision() {
+            var v = document.getElementById('vision-content');
+            if(v.style.display === "none" || v.style.display === "") {
+                v.innerHTML = '<b>Our Vision:</b> To inspire and equip every student with knowledge, resilience, and compassion. <br><b>Mission:</b> To deliver world-class holistic education in a nurturing, inclusive environment. <br><b>Our Core Values:</b> Integrity, Curiosity, Teamwork, Excellence, and Social Responsibility.';
+                v.style.display = "block";
+            } else {
+                v.style.display = "none";
+            }
+        }
+
+        function showInfo(type) {
+            let msg = {
+                academics: 'Our curriculum nurtures each child’s potential. Courses and schedules are kept current—visit Courses or Events for details.',
+                facilities: 'Our campus is open for visits! View our Gallery and Events pages for a closer look.',
+                news: 'All notices and events are on the Events page. Register for workshops and annual functions online.',
+                forall: 'We believe in open access. Download forms, see news, and explore resources for parents, students, and teachers—no login required!'
+            };
+            alert(msg[type]);
+        }
+
+        function websiteAbout(school) {
+            let details = {
+                "DAV Public School, Pune":
+                    "DAV Public School, Pune is a leader in academics and student development. Its site updates news, admissions, results, and campus life regularly.",
+                "St. Mary's School, Pune":
+                    "St. Mary's is famed for its rigorous academics and all-round excellence. The site features awards, alumni, a digital magazine, and a virtual tour.",
+                "Cathedral and John Connon School, Mumbai":
+                    "This Mumbai icon offers a modern site: academics, sports, arts, news, maps, and digital resources for a seamless user experience."
+            };
+            var aboutDiv = document.getElementById('website-about');
+            aboutDiv.style.display = "block";
+            aboutDiv.innerHTML = "<b>" + school + "</b>: " + (details[school] || "Information coming soon.");
+        }
+
+        function schoolDetails(name, city) {
+            let lines = {
+                "St. Xavier's High School": "St. Xavier's, Mumbai: Excellence in academia & leadership. Top SSC results, innovative teaching.",
+                "J.M. Rathi High School": "J.M. Rathi, Nashik: Consistent state-level achievements—mentorship, Olympiads, 100% pass rate.",
+                "Bishop's School": "Bishop's, Pune: Renowned for all-round growth—sports, arts, and academic prowess.",
+                "S.P. Mandali's English Medium School": "S.P. Mandali's, Solapur: English excellence, strong science and sports programs."
+            };
+            var sd = document.getElementById('schooldetails');
+            sd.style.display = "block";
+            sd.innerText = lines[name] || "School details coming soon.";
+            setTimeout(()=>{sd.style.display="none";}, 3300);
+        }
+    </script>
+</body>
+</html>

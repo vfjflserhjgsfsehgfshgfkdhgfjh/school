@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | EduSmart</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; margin:0; background: #f5f8fd; color:#173272; display:flex; align-items:center; justify-content:center; height:100vh; }
+        .card { background: #fff; padding:36px; border-radius:12px; box-shadow:0 8px 30px rgba(23,50,114,0.12); max-width:720px; width:90%; text-align:center; }
+        .tick { width:92px; height:92px; border-radius:50%; background:linear-gradient(135deg,#17b978,#0ea5a8); display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:48px; box-shadow:0 6px 20px rgba(23,50,114,0.12); }
+        h1 { margin:18px 0 8px; font-size:1.6rem; color:#10305a; }
+        p { margin:0 0 18px; color:#375a88; }
+        .sub { color:#61799a; font-size:0.95rem; }
+        .btn { display:inline-block; margin-top:14px; background:#ffc72c; color:#19315c; padding:10px 16px; border-radius:6px; text-decoration:none; font-weight:700; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="tick" aria-hidden="true">✓</div>
+        <h1 id="thankHeading">Thank you for getting in touch!</h1>
+        <p id="thankMsg">We appreciate you contacting BrightaPath School. One of our colleagues will get back in touch with you soon!</p>
+        <p class="sub">If your enquiry is urgent, please call (555) 123-4567.</p>
+        <a href="index.html" class="btn">Return to Home</a>
+    </div>
+
+    <script>
+        // Read ?name= from location and personalize the heading
+        (function(){
+            const params = new URLSearchParams(location.search);
+            const name = params.get('name');
+            if(name){
+                const short = name.split(' ')[0];
+                const heading = document.getElementById('thankHeading');
+                const msg = document.getElementById('thankMsg');
+                heading.textContent = `Thank you, ${short}!`;
+                msg.textContent = `We appreciate you contacting BrightaPath School. One of our colleagues will reply to ${short} shortly.`;
+            }
+        })();
+    </script>
+</body>
+</html>

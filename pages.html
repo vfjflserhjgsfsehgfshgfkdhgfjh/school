@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pages | EduSmart School Management System</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    background: url(/Class.jpg) no-repeat center center fixed;
+    background-size: 1550px auto;
+    background-color: #f5f8fd;
+    color: #26334e;
+    position: relative;
+    min-height: 100vh;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* background: rgba(38, 63, 114, 0.46); */
+    z-index: 0;
+    backdrop-filter: brightness(1.07) saturate(1.13);
+    pointer-events: none;
+}
+.navbar, .announcements, .hero, .pages-list, .footer {
+    position: relative;
+    z-index: 1;
+}
+.navbar {
+    background: rgba(25, 47, 89, 0.96);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 80px;
+    box-shadow: 0 2px 8px rgba(38,63,114,0.12);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 5px;
+}
+.logo-img {
+    height: 75px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+.navbar .logo {
+    color: #fff;
+    font-size: 1.85em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 16px #26334e55;
+}
+.navbar nav {
+    display: flex;
+    gap: 20px;
+}
+.navbar nav a {
+    color: #dbe8fa;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0 10px;
+    position: relative;
+    transition: color 0.3s;
+}
+.navbar nav a:hover,
+.navbar nav a.active,
+.navbar nav a[style*="color:#ffc72c"] {
+    color: #ffc72c;
+}
+.navbar .auth-btns {
+    display: flex;
+    gap: 10px;
+}
+.navbar .auth-btns button {
+    background: #ffc72c;
+    border: none;
+    color: #19315c;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.24s;
+    box-shadow: 0 2px 6px rgba(255, 199,44,0.16);
+    font-size: 1em;
+}
+.navbar .auth-btns button:hover {
+    background: #ffb700;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 12px rgba(255,199,44,0.28);
+}
+.announcements {
+    background: rgba(242,248,254,0.92);
+    color: #173272;
+    font-weight: 600;
+    padding: 13px 0;
+    text-align: center;
+    font-size: 1.08em;
+    letter-spacing: 0.02em;
+}
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 60px 0 40px 0;
+    color: #fff;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 2.3em;
+    margin-bottom: 14px;
+    font-weight: 800;
+    text-shadow: 0 2px 18px #26334e99;
+}
+.hero p {
+    font-size: 1.12em;
+    max-width: 580px;
+    margin: 0 auto 24px auto;
+    color: #f8fbff;
+    text-shadow: 0 1px 6px #19315c74;
+}
+.pages-list {
+    max-width: 700px;
+    margin: 46px auto 0 auto;
+    background: rgba(255,255,255,0.97);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px #26334e18;
+    padding: 38px 26px 22px 26px;
+}
+.pages-list ul { list-style:none; padding:0;}
+.pages-list li {
+    margin-bottom: 19px;
+    font-size: 1.08em;
+    line-height:1.6;
+}
+.pages-list a { color: #174099; text-decoration:underline;}
+.pages-list a:hover { color: #ffc72c; }
+.footer {
+    margin-top: 38px;
+    padding: 40px 18px;
+    background: #19295c;
+    color: #dbe8fa;
+    text-align: center;
+    font-size: 0.98em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 22px;
+}
+.footer .footer-section {
+    flex: 1 1 180px;
+    min-width: 180px;
+    padding: 0 10px;
+}
+.footer h4 {
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #ffc72c;
+}
+.footer a {
+    color: #dbe8fa;
+    text-decoration: none;
+    display: block;
+    margin: 6px 0;
+    transition: color 0.3s;
+}
+.footer a:hover {
+    color: #ffc72c;
+}
+.footer .social-icons {
+    display: flex;
+    gap: 14px;
+    margin-top: 10px;
+    justify-content: center;
+}
+.footer .social-icons a {
+    width: 33px;
+    height: 33px;
+    background: #20305c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffc72c;
+    font-size: 17px;
+    transition: background 0.3s;
+}
+.footer .social-icons a:hover {
+    background: #ffc72c;
+    color: #152a56;
+}
+.footer form input[type="email"] {
+    padding: 7px; border: none; border-radius: 4px; font-size: 0.94em;
+}
+.footer form button {
+    background:#ffc72c; border:none;
+    padding: 9px 12px; font-weight:700;
+    border-radius:4px; color:#19315c;
+    margin-top: 5px; font-size: 1em;
+}
+@media (max-width: 950px) {
+    .pages-list { padding: 20px 5px; }
+    .navbar { flex-direction: column; height:auto; padding: 18px 6px; gap: 10px;}
+    .footer { flex-direction: column; gap: 18px; }
+}
+
+.marquee {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marqueeAnim 20s linear infinite;
+    font-weight: 600;
+    font-size: 1.08em;
+    letter-spacing: 0.02em;
+}
+@keyframes marqueeAnim {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="pages.html" class="logo">
+            <img src="Logo.png" alt="EduSmart Logo" class="logo-img">
+
+            <h1 style="font-size: 80%; font-weight: bold; text-align: left; margin: 0;">
+              <span style="color: #3985dc;">Brighta</span><span style="color: #ffc72c;">Path</span><br>
+              <span style="color: #ffc72c; font-size: 90%; letter-spacing: 0.05em;">School</span>
+            </h1>
+
+        </a>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="courses.html">COURSES</a>
+            <a href="events.html">EVENTS</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="blog.html">BLOG</a>
+            <a href="pages.html" style="color:#ffc72c;">PAGES</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+        <!-- <div class="auth-btns">
+            <button onclick="window.location='login.html'">Sign In</button>
+            <button onclick="alert('Signed out!')">Sign Out</button>
+        </div> -->
+    </div>
+    <div class="announcements">
+        <div class="marquee">
+       📢 Find downloadable forms, policies, and important links here.
+        </div>
+    </div>
+    <section class="hero" style="height:auto;padding:60px 0 40px 0;">
+        <h1>Pages & Resources</h1>
+        <p>
+            Access school rules, downloads, policies, and useful information.
+        </p>
+    </section>
+    <div class="pages-list">
+        <ul>
+            <li><a href="#">Attendance Policy</a> — Guidelines for student attendance and leave.</li>
+            <li><a href="#">Uniform Policy</a> — Dress code and tips for students.</li>
+            <li><a href="#">Digital Learning Guide (PDF)</a> — Help for online platforms.</li>
+            <li><a href="#">Transport Information</a> — Bus routes, timings, safety measures.</li>
+            <li><a href="#">Forms & Downloads</a> — Admission, transfer, or leave forms.</li>
+        </ul>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>452 School Street<br>YourCity, State 12345<br>Phone: (555) 123-4567<br>Email: info@edusmart.edu</p>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>News letter</h4>
+            <form onsubmit="event.preventDefault();alert('Subscribed!');" style="display:flex;flex-direction:column;gap:10px;">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </footer>
+</body>
+</html>
